@@ -1,0 +1,31 @@
+apply plugin: 'java'
+apply plugin: 'application'
+
+sourceCompatibility = '1.8'
+[compileJava, compileTestJava]*.options*.encoding = 'UTF-8'
+
+mainClassName = 'com.codekul.javapp.Main'
+
+
+if (!hasProperty('mainClass')) {
+    ext.mainClass = 'com.codekul.javapp.Main'
+}
+
+repositories {
+    mavenCentral()
+   
+}
+
+jar {
+  manifest {
+    attributes(
+      'Main-Class': 'com.codekul.javapp.Main'
+    )
+  }
+}
+
+dependencies {
+   
+    compile "io.nextop:java-common:0.1.5"
+    testCompile group: 'junit', name: 'junit', version: '4.10'
+}
